@@ -1,0 +1,21 @@
+{
+  "name": "colinc/desk",
+  "description": "Provides a PHP client for the Desk.com API",
+  "keywords": ["desk", "desk.com", "assistly", "assistly.com", "api", "guzzle"],
+  "license": "MIT",
+  "authors": [
+    { "name": "Colin Calvert", "email": "github@whoisc.cc" }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "guzzlehttp/guzzle-services": "^1.1",
+    "guzzlehttp/oauth-subscriber": "^0.3.0",
+    "rtheunissen/guzzle-rate-limiter": "^0.4.0",
+    "gimler/guzzle-description-loader": "^0.0.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ColinC\\Desk\\": "src/"
+    }
+  }
+}
