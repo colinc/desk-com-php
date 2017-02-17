@@ -11,7 +11,8 @@
     "guzzlehttp/guzzle-services": "^1.1",
     "guzzlehttp/oauth-subscriber": "^0.3.0",
     "rtheunissen/guzzle-rate-limiter": "^0.4.0",
-    "gimler/guzzle-description-loader": "^0.0.4"
+    "hassankhan/config": "^0.10.0",
+    "symfony/yaml": "^3.2"
   },
   "autoload": {
     "psr-4": {
