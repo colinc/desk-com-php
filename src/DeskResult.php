@@ -1,6 +1,6 @@
 <?php
 
-namespace ColinC\Desk;
+namespace Desk;
 
 use stdClass;
 use GuzzleHttp\Client;

@@ -1,12 +1,15 @@
 <?php
 
-namespace ColinC\Desk;
+namespace Desk\ResponseLocation;
 
 use GuzzleHttp\Command\Guzzle\ResponseLocation\AbstractLocation;
 use GuzzleHttp\Command\Guzzle\Parameter;
 use GuzzleHttp\Command\Result;
 use GuzzleHttp\Command\ResultInterface;
 use Psr\Http\Message\ResponseInterface;
+
+use Desk\DeskResult;
+
 /**
  * Extracts elements from a JSON document.
  */

@@ -2,111 +2,15 @@ cases:
   httpMethod: GET
   uri: cases
   responseModel: DeskModel
-  parameters:
-    company_id:
-      location: query
-    customer_id:
-      location: query
-    filter_id:
-      location: query
-    sort_field:
-      location: query
-    sort_direction:
-      location: query
-    created:
-      location: query
-    updated:
-      location: query
-    changed:
-      location: query
-    since_created_at:
-      location: query
-    max_created_at:
-      location: query
-    since_updated_at:
-      location: query
-    max_updated_at:
-      location: query
-    since_changed_at:
-      location: query
-    max_changed_at:
-      location: query
-    since_id:
-      location: query
-    max_id:
-      location: query
+  additionalParameters:
+    location: query
 
 search_cases:
   httpMethod: GET
   uri: cases/search
   responseModel: DeskModel
-  parameters:
-    q:
-      location: query
-    name:
-      location: query
-    first_name:
-      location: query
-    last_name:
-      location: query
-    email:
-      location: query
-    phone:
-      location: query
-    company:
-      location: query
-    twitter:
-      location: query
-    labels:
-      location: query
-    case_id:
-      location: query
-    subject:
-      location: query
-    description:
-      location: query
-    status:
-      location: query
-    priority:
-      location: query
-    assigned_group:
-      location: query
-    assigned_user:
-      location: query
-    channels:
-      location: query
-    notes:
-      location: query
-    attachments:
-      location: query
-    case_custom_key:
-      location: query
-    sort_field:
-      location: query
-    sort_direction:
-      location: query
-    created:
-      location: query
-    updated:
-      location: query
-    changed:
-      location: query
-    since_created_at:
-      location: query
-    max_created_at:
-      location: query
-    since_updated_at:
-      location: query
-    max_updated_at:
-      location: query
-    since_changed_at:
-      location: query
-    max_changed_at:
-      location: query
-    since_id:
-      location: query
-    max_id:
-      location: query
+  additionalParameters:
+    location: query
 
 case:
   httpMethod: GET
@@ -116,5 +20,105 @@ case:
     id:
       required: true
       location: uri
-    embed:
-      location: query
+  additionalParameters:
+    location: query
+
+create_case:
+  httpMethod: POST
+  uri: cases
+  responseModel: DeskModel
+  parameters:
+    customer_id:
+      type: integer
+      location: json
+      sentAs: customer
+      data:
+        class: customer
+        href: '/api/v2/customers/{value}'
+        location: links
+    assigned_user_id:
+      type: integer
+      location: json
+      sentAs: assigned_user
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+    assigned_group_id:
+      type: integer
+      location: json
+      sentAs: assigned_group
+      data:
+        class: group
+        href: '/api/v2/groups/{value}'
+        location: links
+    locked_by_id:
+      type: integer
+      location: json
+      sentAs: locked_by
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+    entered_by_id:
+      type: integer
+      location: json
+      sentAs: entered_by
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+  additionalParameters:
+    location: json
+
+update_case:
+  httpMethod: PATCH
+  uri: cases/{id}
+  responseModel: DeskModel
+  parameters:
+    id:
+      required: true
+      location: uri
+    customer_id:
+      description: Undocumented feature to re-assign a case to a different customer
+      type: integer
+      location: json
+      sentAs: customer
+      data:
+        class: customer
+        href: '/api/v2/customers/{value}'
+        location: links
+    assigned_user_id:
+      type: integer
+      location: json
+      sentAs: assigned_user
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+    assigned_group_id:
+      type: integer
+      location: json
+      sentAs: assigned_group
+      data:
+        class: group
+        href: '/api/v2/groups/{value}'
+        location: links
+    locked_by_id:
+      type: integer
+      location: json
+      sentAs: locked_by
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+    entered_by_id:
+      type: integer
+      location: json
+      sentAs: entered_by
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+  additionalParameters:
+    location: json

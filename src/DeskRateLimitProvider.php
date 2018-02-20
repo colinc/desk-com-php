@@ -1,6 +1,6 @@
 <?php
 
-namespace ColinC\Desk;
+namespace Desk;
 
 use Cache;
 use Psr\Http\Message\ResponseInterface;

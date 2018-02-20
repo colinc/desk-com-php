@@ -1,6 +1,6 @@
 <?php
 
-namespace ColinC\Desk;
+namespace Desk;
 
 use Concat\Http\Middleware\RateLimiter;
 use GuzzleHttp\Client;
@@ -9,8 +9,12 @@ use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\Deserializer;
+use GuzzleHttp\Command\Guzzle\Serializer;
 
 use Noodlehaus\Config;
+
+use Desk\RequestLocation\JsonLocation;
+use Desk\ResponseLocation\DeskLocation;
 
 class DeskClient extends GuzzleClient {
 
@@ -34,12 +38,14 @@ class DeskClient extends GuzzleClient {
 
     $client = new Client([
         'base_uri' => 'https://'.$site_name.'.desk.com',
+        //'base_uri' => 'https://nvows-desk-com-pdnvx7ywoiee.runscope.net',
         'handler' => $stack,
         'auth' => 'oauth'
       ]);
 
     $description = [
         'baseUri' => 'https://nvows.desk.com/api/'.$api_version.'/',
+        //'baseUri' => 'https://nvows-desk-com-pdnvx7ywoiee.runscope.net/api/'.$api_version.'/',
         'models' => [
           'DeskModel' => [
             'type' => 'object',
@@ -85,10 +91,14 @@ class DeskClient extends GuzzleClient {
 
     $description = new Description( $description );
 
+    $serializer = new Serializer($description, [
+      'json' => new JsonLocation()
+    ]);
+
     $deserializer = new Deserializer($description, true, [
       'desk' => new DeskLocation()
     ]);
 
-    parent::__construct($client, $description, null, $deserializer);
+    parent::__construct($client, $description, $serializer, $deserializer);
   }
 }

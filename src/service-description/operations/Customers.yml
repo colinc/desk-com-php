@@ -1,0 +1,13 @@
+customers:
+  httpMethod: GET
+  uri: customers
+  responseModel: DeskModel
+  additionalParameters:
+    location: query
+
+search_customers:
+  httpMethod: GET
+  uri: customers/search
+  responseModel: DeskModel
+  additionalParameters:
+    location: query

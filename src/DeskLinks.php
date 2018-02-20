@@ -1,6 +1,6 @@
 <?php
 
-namespace ColinC\Desk;
+namespace Desk;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Guzzle\Parameter;
