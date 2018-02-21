@@ -1,0 +1,24 @@
+create_case_reply:
+  httpMethod: POST
+  uri: cases/{id}/replies
+  responseModel: DeskModel
+  parameters:
+    id:
+      required: true
+      location: uri
+  additionalParameters:
+    location: json
+
+update_case_reply:
+  httpMethod: PATCH
+  uri: cases/{case_id}/replies/{id}
+  responseModel: DeskModel
+  parameters:
+    case_id:
+      required: true
+      location: uri
+    id:
+      required: true
+      location: uri
+  additionalParameters:
+    location: json

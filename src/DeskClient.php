@@ -38,14 +38,12 @@ class DeskClient extends GuzzleClient {
 
     $client = new Client([
         'base_uri' => 'https://'.$site_name.'.desk.com',
-        //'base_uri' => 'https://nvows-desk-com-pdnvx7ywoiee.runscope.net',
         'handler' => $stack,
         'auth' => 'oauth'
       ]);
 
     $description = [
-        'baseUri' => 'https://nvows.desk.com/api/'.$api_version.'/',
-        //'baseUri' => 'https://nvows-desk-com-pdnvx7ywoiee.runscope.net/api/'.$api_version.'/',
+        'baseUri' => 'https://'.$site_name.'.desk.com/api/'.$api_version.'/',
         'models' => [
           'DeskModel' => [
             'type' => 'object',
@@ -57,37 +55,6 @@ class DeskClient extends GuzzleClient {
 
     $operations = new Config([__DIR__.'/service-description/operations']);
     $description['operations'] = $operations->all();
-    /*die(var_dump([
-        'baseUri' => 'https://nvows.desk.com/api/'.$api_version.'/',
-        'operations' => [
-          'case' => [
-            'httpMethod' => 'GET',
-            'parameters' => [
-              'id' => [
-                'required' => 'true',
-                'location' => 'uri'
-              ],
-              'embed' => [
-                'location' => 'query'
-              ],
-            ],
-            'uri' => 'cases/{id}',
-            'responseModel' => 'DeskModel'
-          ],
-          'cases' => [
-            'httpMethod' => 'GET',
-            'uri' => 'cases',
-            'responseModel' => 'DeskModel',
-          ]
-        ],
-        'models' => [
-          'DeskModel' => [
-            'type' => 'object',
-            'additionalProperties' => [ 'location' => 'desk' ],
-            'data' => [ 'client' => $client ],
-          ]
-        ]
-      ]));*/
 
     $description = new Description( $description );
 

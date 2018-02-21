@@ -11,6 +11,23 @@ use Psr\Http\Message\RequestInterface;
 
 class JsonLocation extends GuzzleJsonLocation
 {
+  /** @var string Whether or not to add a Content-Type header when JSON is found */
+  private $jsonContentType;
+
+  /** @var array */
+  private $jsonData;
+
+  /**
+   * @param string $locationName Name of the location
+   * @param string $contentType  Content-Type header to add to the request if
+   *     JSON is added to the body. Pass an empty string to omit.
+   */
+  public function __construct($locationName = 'json', $contentType = 'application/json')
+  {
+    parent::__construct($locationName, $contentType);
+    $this->jsonContentType = $contentType;
+  }
+
   /**
    * @param CommandInterface $command
    * @param RequestInterface $request
