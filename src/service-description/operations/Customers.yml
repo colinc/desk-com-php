@@ -11,3 +11,38 @@ search_customers:
   responseModel: DeskModel
   additionalParameters:
     location: query
+
+customer:
+  httpMethod: GET
+  uri: customers/{id}
+  responseModel: DeskModel
+  parameters:
+    id:
+      required: true
+      location: uri
+  additionalParameters:
+    location: query
+
+create_customer:
+  httpMethod: POST
+  uri: customers
+  responseModel: DeskModel
+  parameters:
+    locked_by_id:
+      type: integer
+      location: json
+      sentAs: locked_by
+      data:
+        class: user
+        href: '/api/v2/users/{value}'
+        location: links
+    company_id:
+      type: integer
+      location: json
+      sentAs: company
+      data:
+        class: company
+        href: '/api/v2/companies/{value}'
+        location: links
+  additionalParameters:
+    location: json
